@@ -1,9 +1,12 @@
-name: Build Pearl Link
+name: Build and Release
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -25,9 +28,16 @@ jobs:
       - name: Build with Gradle
         run: gradle build --no-daemon
 
-      - name: Upload jar
-        uses: actions/upload-artifact@v4
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: pearllink-1.0.0
-          path: build/libs/*.jar
-          if-no-files-found: error
+          tag_name: v1.0.0
+          name: Pearl Link 1.0.0
+          body: |
+            Client-side Fabric mod for Minecraft 26.2
+            - /pearl link <player>
+            - Keybind (default G) triggers the other player to right-click a trapdoor
+          files: |
+            build/libs/*.jar
+          draft: false
+          prerelease: false
