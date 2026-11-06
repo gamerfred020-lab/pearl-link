@@ -1,0 +1,23 @@
+{
+	"schemaVersion": 1,
+	"id": "pearllink",
+	"version": "${version}",
+	"name": "Pearl Link",
+	"description": "Link two players so a keybind (default G) makes the other right-click only when facing a trapdoor. Client-side only.",
+	"authors": [
+		"Grok"
+	],
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.example.client.PearlLinkClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
